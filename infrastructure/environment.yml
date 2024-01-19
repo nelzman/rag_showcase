@@ -1,0 +1,25 @@
+name: gpt_rag
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip:
+      - black==23.12.1
+      - beautifulsoup4==4.11.2
+      - bs4==0.0.2
+      - buildozer==1.5.0
+      - chromadb==0.4.22
+      - dateparser==1.1.7
+      - faiss-cpu==1.7.4
+      #- faiss-gpu
+      - langchain==0.1.1
+      - langchainhub==0.1.14
+      - longchain==-openai==0.0.2
+      - numpy==1.24.1
+      - openai==1.6.1
+      - pandas==1.5.3
+      - PyPDF2==3.0.1
+      - pypdf==3.17.4
+      - regex==2022.10.31
+      - setuptools==69.0.3 
+      - typing_extensions==4.9.0
