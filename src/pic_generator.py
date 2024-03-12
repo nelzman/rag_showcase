@@ -1,5 +1,6 @@
 import os
 import openai
+import getpass
 
 # pricing: https://openai.com/pricing
 
