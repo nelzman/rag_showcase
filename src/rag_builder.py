@@ -1,6 +1,7 @@
 import os
 import getpass
 from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.callbacks import get_openai_callback
 from langchain import hub
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
@@ -22,7 +23,7 @@ class RAGBuilder:
         os.environ['OPENAI_API_KEY'] = getpass.getpass('OpenAI API Key:')
             
         
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
         splits = text_splitter.split_documents(docs)
         vectorstore = Chroma.from_documents(documents=splits, embedding=OpenAIEmbeddings())
 
@@ -48,5 +49,7 @@ class RAGBuilder:
 if __name__ == "__main__":
     rag_builder = RAGBuilder()
     rag_chain = rag_builder.make_chain_from_pdf(pdf_path="./docs/Baerengeschichte.pdf")
-
-    print(rag_chain.invoke("Ging Benny den Bach entlang oder hat er ihn überquert?"))
+    with get_openai_callback() as cb:
+        result = rag_chain.invoke("Ging Benny den Bach entlang oder hat er ihn überquert?")
+        print(result)
+        print(cb)

@@ -14,7 +14,7 @@ dependencies:
       #- faiss-gpu
       - langchain==0.1.1
       - langchainhub==0.1.14
-      - longchain==-openai==0.0.2
+      - langchain-openai==0.0.3
       - numpy==1.24.1
       - openai==1.6.1
       - pandas==1.5.3
@@ -22,4 +22,5 @@ dependencies:
       - pypdf==3.17.4
       - regex==2022.10.31
       - setuptools==69.0.3 
+      - tiktoken==0.4.0
       - typing_extensions==4.9.0
