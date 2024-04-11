@@ -21,6 +21,10 @@ class RAGBuilder:
         docs = loader.load_and_split()
         # print(pages[2])
         os.environ['OPENAI_API_KEY'] = getpass.getpass('OpenAI API Key:')
+        os.environ['LANGCHAIN_TRACING_V2'] = "True"
+        os.environ['LANGCHAIN_ENDPOINT'] = "https://api.smith.langchain.com"
+        os.environ['LANGCHAIN_API_KEY'] = getpass.getpass('LangSmith API Key:')
+        os.environ['LANGCHAIN_PROJECT'] = "test_project"
             
         
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
@@ -47,6 +51,9 @@ class RAGBuilder:
     
     
 if __name__ == "__main__":
+
+    from langchain.chat_models import ChatOpenAI
+
     rag_builder = RAGBuilder()
     rag_chain = rag_builder.make_chain_from_pdf(pdf_path="./docs/Baerengeschichte.pdf")
     with get_openai_callback() as cb:
