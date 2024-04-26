@@ -19,3 +19,9 @@ start_app:
 
 build_app: 
 	buildozer android debug deploy run
+
+youtube_ipynb_to_pdf:
+	jupyter nbconvert --to pdf src/youtube_rag.ipynb
+
+youtube_ipynb_to_html:
+	jupyter nbconvert --to html src/youtube_rag.ipynb
